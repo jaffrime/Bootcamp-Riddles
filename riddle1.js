@@ -8,8 +8,10 @@ First Player picks 18, now row of coins is 20 15 30 10 14. Second player picks 2
 
 var givenArray = [18,20,15,30,10,14];
 var choice;
-var p1 = 0;
-var p2 = 0;
+var players = {
+  p1: 0,
+  p2: 0
+};
 var lastLoc;
 
 var createArray = function (size, variance) {
@@ -22,34 +24,40 @@ var createArray = function (size, variance) {
 }
 
 var pickingGame = function (array) {
-  while (array.length > 0) {
-
+  for (i=0; i<(array.length/2); i++) {
+    complexChoice(array,"p1");
+    complexChoice(array,"p2");
   }
 }
 
-var complexChoice = function (array, player) {
+var complexChoice = function (array,player) {
   lastLoc = array.length-1;
 
-  if ((array[0]+array[lastLoc-1])>(array[1]+carray[lastLoc])) {
+  if ((array[0]+array[lastLoc-1])>(array[1]+array[lastLoc])) {
       choice = 0;
   } else choice = lastLoc;
 
-  p1 += array[choice];
+  players[player] += array[choice];
   array.splice(choice,1);
 
 };
 
-var simpleChoice = function (array, player) {
+var simpleChoice = function (array,player) {
   lastLoc = array.length-1;
 
   if (array[0] > array[lastLoc]) {
     choice = 0;
   } else choice = lastLoc;
 
-  p2 += array[choice];
+  players[player] += array[choice];
   array.splice(choice,1);
 
 };
 
 
 var randArray = createArray(10, 50);
+pickingGame(randArray);
+
+
+//console.log(givenArray);
+console.log(players.p1 + " / " + players.p2);
