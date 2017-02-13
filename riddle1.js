@@ -6,26 +6,28 @@ There are n coins in a line (assume n is even). Two players take turns to take a
 First Player picks 18, now row of coins is 20 15 30 10 14. Second player picks 20, now row of coins is 15 30 10 14. First player picks 15, now row of coins is 30 10 14. Second player picks 30, now row of coins is 10 14. First player picks 14, now row of coins is 10. Second player picks 10, game over. The total value collected by second player is more (20 + 30 + 10) compared to first player (18 + 15 + 14). So the second player wins.
 */
 
-var coinArray = [18,20,15,30,10,14];
+var givenArray = [18,20,15,30,10,14];
 var choice;
 var p1 = 0;
 var p2 = 0;
 var lastLoc;
 
-var randArray = [];
-
-for (i=0; i<10; i++) {
-  randArray.push(Math.floor((Math.random() * 50)+1));
+var createArray = function (size, variance) {
+  var newArray = [];
+  for (i=0; i<size; i++) {
+    newArray.push(Math.floor((Math.random() * variance)+1));
+  }
+  console.log(newArray);
+  return newArray;
 }
 
-console.log(randArray);
+var pickingGame = function (array) {
+  while (array.length > 0) {
 
-// while (coinArray.length > 0) {
-//
-// }
+  }
+}
 
-// complex choice
-var complexChoice = function (array) {
+var complexChoice = function (array, player) {
   lastLoc = array.length-1;
 
   if ((array[0]+array[lastLoc-1])>(array[1]+carray[lastLoc])) {
@@ -37,8 +39,7 @@ var complexChoice = function (array) {
 
 };
 
-// simple choice
-var simpleChoice = function (array) {
+var simpleChoice = function (array, player) {
   lastLoc = array.length-1;
 
   if (array[0] > array[lastLoc]) {
@@ -51,5 +52,4 @@ var simpleChoice = function (array) {
 };
 
 
-console.log(coinArray);
-console.log(p1 + " / " + p2);
+var randArray = createArray(10, 50);
