@@ -12,42 +12,44 @@ var p1 = 0;
 var p2 = 0;
 var lastLoc;
 
+var randArray = [];
+
+for (i=0; i<10; i++) {
+  randArray.push(Math.floor((Math.random() * 50)+1));
+}
+
+console.log(randArray);
+
 // while (coinArray.length > 0) {
 //
 // }
 
 // complex choice
-var p1Choice = function () {
-  lastLoc = coinArray.length-1;
+var complexChoice = function (array) {
+  lastLoc = array.length-1;
 
-  if ((coinArray[0]+coinArray[lastLoc-1])>(coinArray[1]+coinArray[lastLoc])) {
+  if ((array[0]+array[lastLoc-1])>(array[1]+carray[lastLoc])) {
       choice = 0;
   } else choice = lastLoc;
 
-  p1 += coinArray[choice];
-  coinArray.splice(choice,1);
+  p1 += array[choice];
+  array.splice(choice,1);
 
 };
 
 // simple choice
-var p2Choice = function () {
-  lastLoc = coinArray.length-1;
+var simpleChoice = function (array) {
+  lastLoc = array.length-1;
 
-  if (coinArray[0] > coinArray[lastLoc]) {
+  if (array[0] > array[lastLoc]) {
     choice = 0;
   } else choice = lastLoc;
 
-  p2 += coinArray[choice];
-  coinArray.splice(choice,1);
+  p2 += array[choice];
+  array.splice(choice,1);
 
 };
 
-p1Choice();
-p2Choice();
-p1Choice();
-p2Choice();
-p1Choice();
-p2Choice();
 
 console.log(coinArray);
 console.log(p1 + " / " + p2);
